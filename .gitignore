@@ -25,7 +25,7 @@ dist-ssr
 
 !web/favicon.ico
 !web/index.html
-web/
 __pycache__/
 .ops/
 *.zip
+.env
