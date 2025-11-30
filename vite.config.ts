@@ -7,7 +7,16 @@ export default defineConfig(({ mode }) => {
 
   return {
     build: {
-      outDir: "web"
+      outDir: "web",
+      rollupOptions: {
+        onwarn(warning, warn) {
+          // Ignore "use client" directive warnings from React Server Components libraries
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+            return;
+          }
+          warn(warning);
+        }
+      }
     },
     server: {
       proxy: {
